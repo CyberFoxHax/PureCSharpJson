@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 
 namespace PureCSharpJson.PureCSharpJson {
-	public static partial class NewJson{
+	public static partial class PureCSharpJson{
 		private static object ReadArray(JSONArray arrayNode, Type type){
 			var newInstance = (IList)Activator.CreateInstance(type, arrayNode.Count);
 			var indiceType = type.GetElementType() ?? type.GetGenericArguments().FirstOrDefault();

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace PureCSharpJson.PureCSharpJson {
-	public static partial class NewJson{
+	public static partial class PureCSharpJson{
 
 		private static readonly Dictionary<Type, Func<object, JSONData>> ConversionMap = new Dictionary<Type, Func<object, JSONData>>{
 			{typeof(string)	, p=>new JSONData((string)p)},

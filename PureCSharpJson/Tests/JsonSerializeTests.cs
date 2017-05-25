@@ -57,7 +57,7 @@ namespace PureCSharpJson.Tests{
 		public void GenericBasic() {
 			Assert.AreEqual(
 				@"{""Property"":{""IntProp"":123,""DoubleProp"":0.123123123,""FloatProp"":0.123123}}",
-				NewJson.Serialize(new Generic<BasicClass> { Property = new BasicClass { IntProp = 123, DoubleProp = 0.123123123, FloatProp = 0.123123f } })
+				PureCSharpJson.PureCSharpJson.Serialize(new Generic<BasicClass> { Property = new BasicClass { IntProp = 123, DoubleProp = 0.123123123, FloatProp = 0.123123f } })
 				);
 		}
 
@@ -65,7 +65,7 @@ namespace PureCSharpJson.Tests{
 		public void GenericPrimitive() {
 			Assert.AreEqual(
 				@"{""Property"":""HelloJSON!""}",
-				NewJson.Serialize(new Generic<string> { Property = "HelloJSON!"})
+				PureCSharpJson.PureCSharpJson.Serialize(new Generic<string> { Property = "HelloJSON!"})
 				);
 		}
 
@@ -73,7 +73,7 @@ namespace PureCSharpJson.Tests{
 		public void GenericList() {
 			Assert.AreEqual(
 				@"{""Property"":[1,2,3,4,5,6]}",
-				NewJson.Serialize(new Generic<List<int>> { Property = new List<int>{1,2,3,4,5,6} })
+				PureCSharpJson.PureCSharpJson.Serialize(new Generic<List<int>> { Property = new List<int>{1,2,3,4,5,6} })
 				);
 		}
 
@@ -81,7 +81,7 @@ namespace PureCSharpJson.Tests{
 		public void GenericRecurse() {
 			Assert.AreEqual(
 				@"{""Property"":{""Property"":""SuchRecursion""}}",
-				NewJson.Serialize(new Generic<Generic<string>> { Property = new Generic<string> { Property = "SuchRecursion" } })
+				PureCSharpJson.PureCSharpJson.Serialize(new Generic<Generic<string>> { Property = new Generic<string> { Property = "SuchRecursion" } })
 				);
 		}
 
@@ -89,7 +89,7 @@ namespace PureCSharpJson.Tests{
 		public void GenericComplexRecurse() {
 			Assert.AreEqual(
 				@"{""Property"":{""Property"":{""IntProp"":123,""DoubleProp"":0.123123123,""FloatProp"":0.123123}}}",
-				NewJson.Serialize(new Generic<Generic<BasicClass>> { Property = new Generic<BasicClass> { Property = new BasicClass { IntProp = 123, DoubleProp = 0.123123123, FloatProp = 0.123123f } } })
+				PureCSharpJson.PureCSharpJson.Serialize(new Generic<Generic<BasicClass>> { Property = new Generic<BasicClass> { Property = new BasicClass { IntProp = 123, DoubleProp = 0.123123123, FloatProp = 0.123123f } } })
 				);
 		}
 
@@ -97,7 +97,7 @@ namespace PureCSharpJson.Tests{
 		public void BasicObject() {
 			Assert.AreEqual(
 				@"{""IntProp"":123,""DoubleProp"":0.123123123,""FloatProp"":0.123123}",
-				NewJson.Serialize(new BasicClass { IntProp = 123, DoubleProp = 0.123123123, FloatProp = 0.123123f })
+				PureCSharpJson.PureCSharpJson.Serialize(new BasicClass { IntProp = 123, DoubleProp = 0.123123123, FloatProp = 0.123123f })
 				);
 		}
 
@@ -105,7 +105,7 @@ namespace PureCSharpJson.Tests{
 		public void MixWithFields() {
 			Assert.AreEqual(
 				@"{""Prop"":123}",
-				NewJson.Serialize(new MixedFields { Field = 2, Prop = 123 })
+				PureCSharpJson.PureCSharpJson.Serialize(new MixedFields { Field = 2, Prop = 123 })
 				);
 		}
 
@@ -113,7 +113,7 @@ namespace PureCSharpJson.Tests{
 		public void NestedClasses() {
 			Assert.AreEqual(
 				@"{""Class"":{""IntProp"":1234}}",
-				NewJson.Serialize(new NestedClass { Class = new BasicClass { IntProp = 1234 } })
+				PureCSharpJson.PureCSharpJson.Serialize(new NestedClass { Class = new BasicClass { IntProp = 1234 } })
 				);
 		}
 
@@ -121,7 +121,7 @@ namespace PureCSharpJson.Tests{
 		public void Enums() {
 			Assert.AreEqual(
 				@"{""Val2"":1,""Val3"":2}",
-				NewJson.Serialize(new { Val1 = TestEnum.Key1Default, Val2 = TestEnum.Key2, Val3 = TestEnum.Key3 })
+				PureCSharpJson.PureCSharpJson.Serialize(new { Val1 = TestEnum.Key1Default, Val2 = TestEnum.Key2, Val3 = TestEnum.Key3 })
 				);
 		}
 
@@ -130,7 +130,7 @@ namespace PureCSharpJson.Tests{
 			Assert.Inconclusive();
 			Assert.AreEqual(
 				@"{}",
-				NewJson.Serialize(new NestedClass { Class = null })
+				PureCSharpJson.PureCSharpJson.Serialize(new NestedClass { Class = null })
 				);
 		}
 
@@ -139,7 +139,7 @@ namespace PureCSharpJson.Tests{
 			Assert.Inconclusive();
 			Assert.AreEqual(
 				@"{""Class"":{}}",
-				NewJson.Serialize(new NestedClass2{
+				PureCSharpJson.PureCSharpJson.Serialize(new NestedClass2{
 					Class = new NestedClass{
 						Class = null
 					}
@@ -152,7 +152,7 @@ namespace PureCSharpJson.Tests{
 			Assert.Inconclusive();
 			Assert.AreEqual(
 				@"{""Class"":{}, ""Value"":3}",
-				NewJson.Serialize(new NestedClassWithNullAndProp {
+				PureCSharpJson.PureCSharpJson.Serialize(new NestedClassWithNullAndProp {
 					Class = new NestedClass {
 						Class = null
 					},
@@ -165,7 +165,7 @@ namespace PureCSharpJson.Tests{
 		public void Null() {
 			Assert.AreEqual(
 				@"{}",
-				NewJson.Serialize(null)
+				PureCSharpJson.PureCSharpJson.Serialize(null)
 				);
 		}
 
@@ -173,7 +173,7 @@ namespace PureCSharpJson.Tests{
 		public void StringObjects() {
 			Assert.AreEqual(
 				@"{""StringValue"":""FuckMother""}",
-				NewJson.Serialize(new StringObject { StringValue = "FuckMother"})
+				PureCSharpJson.PureCSharpJson.Serialize(new StringObject { StringValue = "FuckMother"})
 				);
 		}
 
@@ -181,7 +181,7 @@ namespace PureCSharpJson.Tests{
 		public void ScriptIgnore() {
 			Assert.AreEqual(
 				@"{""NotIgnored"":2}",
-				NewJson.Serialize(new IgnoredProps{ NotIgnored = 2, Ignored = 123 })
+				PureCSharpJson.PureCSharpJson.Serialize(new IgnoredProps{ NotIgnored = 2, Ignored = 123 })
 				);
 		}
 
@@ -189,7 +189,7 @@ namespace PureCSharpJson.Tests{
 		public void AnonymousObject() {
 			Assert.AreEqual(
 				@"{""IntProp"":123,""DoubleProp"":0.123123123,""FloatProp"":0.123123}",
-				NewJson.Serialize(new { IntProp = 123, DoubleProp = 0.123123123, FloatProp = 0.123123f })
+				PureCSharpJson.PureCSharpJson.Serialize(new { IntProp = 123, DoubleProp = 0.123123123, FloatProp = 0.123123f })
 				);
 		}
 
@@ -197,7 +197,7 @@ namespace PureCSharpJson.Tests{
 		public void AnonymousObjectWithNestedBasicObject() {
 			Assert.AreEqual(
 				@"{""ClassProp"":{""DoubleProp"":123}}",
-				NewJson.Serialize(new { ClassProp = new BasicClass { DoubleProp = 123 } })
+				PureCSharpJson.PureCSharpJson.Serialize(new { ClassProp = new BasicClass { DoubleProp = 123 } })
 				);
 		}
 
@@ -205,7 +205,7 @@ namespace PureCSharpJson.Tests{
 		public void AnonymousObjectWithNestedAnonymousObject() {
 			Assert.AreEqual(
 				@"{""ClassProp"":{""Val"":123}}",
-				NewJson.Serialize(new { ClassProp = new { Val = 123 } })
+				PureCSharpJson.PureCSharpJson.Serialize(new { ClassProp = new { Val = 123 } })
 				);
 		}
 
@@ -213,7 +213,7 @@ namespace PureCSharpJson.Tests{
 		public void BasicObjectWithNestedAnonymousObject() {
 			Assert.AreEqual(
 				@"{""Anon"":{""Val"":123}}",
-				NewJson.Serialize(new WithAnon { Anon = new { Val = 123 } })
+				PureCSharpJson.PureCSharpJson.Serialize(new WithAnon { Anon = new { Val = 123 } })
 				);
 		}
 
@@ -221,7 +221,7 @@ namespace PureCSharpJson.Tests{
 		public void SimpleNumberArray() {
 			Assert.AreEqual(
 				@"[1,2,3,4,5,6,7,8,9]",
-				NewJson.Serialize(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 })
+				PureCSharpJson.PureCSharpJson.Serialize(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 })
 				);
 		}
 
@@ -229,7 +229,7 @@ namespace PureCSharpJson.Tests{
 		public void SimpleNumberArray2() {
 			Assert.AreEqual(
 				@"[123456789,123456789,123456789]",
-				NewJson.Serialize(new[] { 123456789, 123456789, 123456789 })
+				PureCSharpJson.PureCSharpJson.Serialize(new[] { 123456789, 123456789, 123456789 })
 				);
 		}
 
@@ -237,7 +237,7 @@ namespace PureCSharpJson.Tests{
 		public void SimpleNumberList() {
 			Assert.AreEqual(
 				@"[1,2,3,4,5,6,7,8,9]",
-				NewJson.Serialize(new List<float> { 1, 2, 3, 4, 5, 6, 7, 8, 9 })
+				PureCSharpJson.PureCSharpJson.Serialize(new List<float> { 1, 2, 3, 4, 5, 6, 7, 8, 9 })
 				);
 		}
 
@@ -245,7 +245,7 @@ namespace PureCSharpJson.Tests{
 		public void SimpleStringArray() {
 			Assert.AreEqual(
 				@"[""Hello"",""World"",""!""]",
-				NewJson.Serialize(new []{ "Hello", "World", "!" })
+				PureCSharpJson.PureCSharpJson.Serialize(new []{ "Hello", "World", "!" })
 				);
 		}
 
@@ -253,7 +253,7 @@ namespace PureCSharpJson.Tests{
 		public void ArrayOfAnonymousObjects() {
 			Assert.AreEqual(
 				@"[{""Val"":1},{""Val"":2},{""Val"":3}]",
-				NewJson.Serialize(new[] { new { Val = 1 }, new { Val = 2 }, new { Val = 3 } })
+				PureCSharpJson.PureCSharpJson.Serialize(new[] { new { Val = 1 }, new { Val = 2 }, new { Val = 3 } })
 				);
 		}
 
@@ -261,7 +261,7 @@ namespace PureCSharpJson.Tests{
 		public void ArrayWithNull() {
 			Assert.AreEqual(
 				@"[null,null,{""Val"":3}]",
-				NewJson.Serialize(new[] { null, null, new { Val = 3 } })
+				PureCSharpJson.PureCSharpJson.Serialize(new[] { null, null, new { Val = 3 } })
 				);
 		}
 
@@ -269,7 +269,7 @@ namespace PureCSharpJson.Tests{
 		public void ArrayOfBasicObjectsOnDifferentProperties() {
 			Assert.AreEqual(
 				@"[{""IntProp"":1},{""DoubleProp"":2},{""FloatProp"":3}]",
-				NewJson.Serialize(new[] { new BasicClass { IntProp = 1 }, new BasicClass { DoubleProp = 2 }, new BasicClass { FloatProp = 3 } })
+				PureCSharpJson.PureCSharpJson.Serialize(new[] { new BasicClass { IntProp = 1 }, new BasicClass { DoubleProp = 2 }, new BasicClass { FloatProp = 3 } })
 				);
 		}
 	}

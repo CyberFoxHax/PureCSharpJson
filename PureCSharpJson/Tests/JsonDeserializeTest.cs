@@ -8,16 +8,16 @@ namespace PureCSharpJson.Tests{
 	[TestClass]
 	public class JsonDeserializeTest {
 		public static void AreEqual<T>(T p, string json) {
-			Assert.AreEqual(p, NewJson.Deserialize<T>(json));
+			Assert.AreEqual(p, PureCSharpJson.PureCSharpJson.Deserialize<T>(json));
 		}
 
 		public static void AreNotEqual<T>(T p, string json) {
-			Assert.AreNotEqual(p, NewJson.Deserialize<T>(json));
+			Assert.AreNotEqual(p, PureCSharpJson.PureCSharpJson.Deserialize<T>(json));
 		}
 
 		public static void AreEqualArr<T>(IEnumerable<T> p, string json) {
 			var listA = p as IList;
-			var listB = NewJson.Deserialize(json, p.GetType()) as IList;
+			var listB = PureCSharpJson.PureCSharpJson.Deserialize(json, p.GetType()) as IList;
 			if (listA == null || listB == null) return;
 			if (listA.Count != listB.Count) return;
 			if (listA.Cast<object>().Where((t, i) => t.Equals(listB[i]) == false).Any() == false)
@@ -27,7 +27,7 @@ namespace PureCSharpJson.Tests{
 
 		public static void AreNotEqualArr<T>(IEnumerable<T> p, string json) {
 			var listA = p as IList;
-			var listB = NewJson.Deserialize(json, p.GetType()) as IList;
+			var listB = PureCSharpJson.PureCSharpJson.Deserialize(json, p.GetType()) as IList;
 			if (listA == null || listB == null) return;
 			if (listA.Count != listB.Count) return;
 			if (listA.Cast<object>().Where((t, i) => t.Equals(listB[i]) == false).Any())
@@ -305,7 +305,7 @@ namespace PureCSharpJson.Tests{
 				}
 			};
 
-			var json = NewJson.Deserialize<NestedArrayJagged>(@"{""Ints2"":[[1,2,3],[4,5,6],[7,8,9]]}");
+			var json = PureCSharpJson.PureCSharpJson.Deserialize<NestedArrayJagged>(@"{""Ints2"":[[1,2,3],[4,5,6],[7,8,9]]}");
 
 			for (var i = 0; i < 3; i++)
 				for (var ii = 0; ii < 3; ii++)
@@ -320,7 +320,7 @@ namespace PureCSharpJson.Tests{
 				new[]{7, 8, 9}
 			};
 
-			var json = NewJson.Deserialize<int[][]>(@"[[1,2,3],[4,5,6],[7,8,9]]");
+			var json = PureCSharpJson.PureCSharpJson.Deserialize<int[][]>(@"[[1,2,3],[4,5,6],[7,8,9]]");
 
 			for (var i = 0; i < 3; i++)
 				for (var ii = 0; ii < 3; ii++)
@@ -397,7 +397,7 @@ namespace PureCSharpJson.Tests{
 			};
 			Assert.AreEqual(
 				obj,
-				NewJson.Deserialize<BasicClass>(NewJson.Serialize(obj))
+				PureCSharpJson.PureCSharpJson.Deserialize<BasicClass>(PureCSharpJson.PureCSharpJson.Serialize(obj))
 				);
 		}
 	}
