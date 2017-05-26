@@ -29,6 +29,7 @@ PureCSharpJson.Deserialize<Model>("{\"StringValue\":\"Value\",\"SomeNumber\",123
  * Not failing on oddly formatted JSON. Filtering out. Whitespace, \r, \n and  \t
  
 #### Notes
+ * Only handles Properties (Not Fields, contrary to Unity3d's JSON implementation)
  * Null properties will be omitted when serialized
  * Null properties will deserialize to `null` on Complex types and deserialize to `default(T)` on Value types
  * In Complex arrays, null values will be serialized like so: [null,{},null,null,{}] to preserve indexes
